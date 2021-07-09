@@ -1,4 +1,120 @@
-h1,
-p {
-    color: white;
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    
+}
+.img-header {
+    background-image: url(/img/header.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    max-width: 100%;
+    margin: 0;
+}
+.bg-white {
+    opacity: .85;
+}
+.avatar {
+    max-width: 300px;
+    max-height: 300px;
+}
+@media (min-width: 768px) {
+    .avatar {
+        max-width: 300px;
+        max-height: 250px;
+    }
+}
+@media (min-width: 992px) {
+    .avatar {
+        max-width: 300px;
+        max-height: 300px;
+    }
+}
+.bg-main {
+    font-family: 'Quicksand', sans-serif;
+    min-height: 575px;
+    background-color: rgb(231, 231, 231);
+    border: solid 1px black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top: 0;
+    box-shadow: 8px 0px 25px black,
+                -8px 0px 25px black;
+}
+
+/* Slider */
+.imgs:hover::before {
+    font-family: "Font Awesome 5 Free";
+    font-size: 2rem;
+    font-weight: 900;
+    padding: 30% 0;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.7);
+    content: "\f00e";
+    color: #007ea7 !important;
+    display: block !important;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+#slide_nav_button {
+    font-size: 2rem;
+    cursor: pointer;
+    color: white !important;
+}
+
+@media (max-width: 767px) {
+    #slide_menu {
+        display: none;
+    }
+
+    #slide_menu li a {
+        font-size: 1.3rem !important;
+    }
+
+    .preview {
+        display: none !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .logodev {
+        font-size: 1.5rem;
+        padding-top: 0.7rem !important;
+    }
+}
+
+#error {
+    display: none;
+}
+
+#nice {
+    display: none;
+}
+
+.slider {
+    right: 30px;
+    bottom: 50px;
+}
+
+.preview {
+    margin: 0 35px;
+}
+
+.preview img {
+    width: 60px;
+    margin: 0 10px;
+    opacity: 0.4;
+}
+
+.preview .activeBar {
+    display: block;
+    border: 3px solid #000;
+    width: 100px;
+    opacity: 1;
+    animation: fadeIn;
+    animation-duration: 2s;
 }
