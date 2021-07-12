@@ -73,7 +73,7 @@
     <main class="container py-5 bg-main">
         <div class="row text-center">
             <h2 class="display-1 mb-3">Sobre mi</h2>
-            <div class="row mx-auto col-12 col-md-5 col-lg-4 justify-content-center">
+            <div class="row mx-auto col-12 col-lg-5 col-lg-4 justify-content-center">
                 <img src="/img/i.jpg" alt="Avatar" class="avatar my-4 img-fluid rounded-circle col-7 col-md-12">
             </div>
             <div class="col-12 col-md-7 col-lg-8 align-self-center">
@@ -136,15 +136,15 @@
 
     <section id="portafolios">
         <div class="col-12 portafolio py-3 mt-5 shadow d-md-flex flex-column justify-content-center align-items-center bg-light shadow-lg">
-            <div class="container">
-                <h2 class="col-12 text-center py-2 linea my-4">Proyectos</h2>
-                <div id="webs" class="d-md-flex flex-column justify-content-center align-items-center">
-                    <div id="web1" class="d-block animate__animated animate__fadeIn">
-                        <div class="d-md-flex flex-row justify-content-between align-items-center">
-                            <img src="img/gdlwebcamp-01.png" class="col-12 col-md-6">
-                            <div class="col-12 col-md-5 mt-4 py-0">
-                                <h4 class=" text-center">GDLWEBCAMP</h4>
-                                <h5 class=" text-center">Conferencia de Desarrollo Web (ficticia)</h5>
+            <div class="container row mx-auto">
+                <h2 class="col-12 text-center py-2 linea my-4 order-1">Proyectos</h2>
+                <div id="webs" class="d-md-flex flex-column justify-content-center align-items-center order-3 order-lg-2">
+                    <div class="d-block animate__animated animate__fadeIn webToSlider">
+                        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
+                            <img src="img/gdlwebcamp-01.png" class="col-12 col-lg-6">
+                            <div class="col-12 col-lg-5 mt-4 py-0">
+                                <h4 class="text-center">GDLWEBCAMP</h4>
+                                <h5 class="text-center">Conferencia de Desarrollo Web (ficticia)</h5>
                                 <p class="text-center col-9 col-sm-12 mx-auto">
                                     Este es un proyecto de final de curso el cual tomé a modo
                                     personal luego de terminarlo, para seguirle añadiendo nuevas secciones y
@@ -163,9 +163,9 @@
                             </div>
                         </div>
                     </div>
-                    <div id="web2" class="d-none animate__animated animate__fadeIn">
+                    <div class="d-none animate__animated animate__fadeIn webToSlider">
                         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
-                            <div class="col-12 col-md-5 mt-4 py-0 order-2 order-lg-1">
+                            <div class="col-12 col-lg-5 mt-4 py-0 order-2 order-lg-1">
                                 <h4 class=" text-center">Santos Manjares</h4>
                                 <h5 class=" text-center">Restaurante</h5>
                                 <p class="text-center col-11 mx-auto">
@@ -183,13 +183,13 @@
                                     </a>
                                 </div>
                             </div>
-                            <img src="img/sm-01.png" class="col-12 col-md-6 order-1 order-lg-2">
+                            <img src="img/sm-01.png" class="col-12 col-lg-6 order-1 order-lg-2">
                         </div>
                     </div>
-                    <div id="web3" class="d-none animate__animated animate__fadeIn">
-                        <div class="d-md-flex flex-row justify-content-between align-items-center">
-                            <img src="img/firebase-chat-01.png" class="col-12 col-md-6">
-                            <div class="col-12 col-md-5 mt-4 py-0">
+                    <div class="d-none animate__animated animate__fadeIn webToSlider">
+                        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
+                            <img src="img/firebase-chat-01.png" class="col-12 col-lg-6">
+                            <div class="col-12 col-lg-5 mt-4 py-0">
                                 <h4 class=" text-center">B Chat</h4>
                                 <h5 class=" text-center">Chat grupal</h5>
                                 <p class="text-center col-11 mx-auto">Aquí podemos ver un chat en tiempo real, utiliza el registro
@@ -207,9 +207,9 @@
                             </div>
                         </div>
                     </div>
-                    <div id="web4" class="d-none animate__animated animate__fadeIn">
+                    <div class="d-none animate__animated animate__fadeIn webToSlider">
                         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
-                            <div class="col-12 col-md-5 mt-4 py-0  order-2 order-lg-1">
+                            <div class="col-12 col-lg-5 mt-4 py-0  order-2 order-lg-1">
                                 <h4 class=" text-center">Full Bootstrap</h4>
                                 <p class="text-center col-11 mx-auto">Aquí podemos ver todo el poder de bootstrap en una página 
                                     simple, aunque con varios elementos atractivos a la vista. Fue construida desde cero
@@ -225,16 +225,17 @@
                                     </a>
                                 </div>
                             </div>
-                            <img src="img/bootsrap-page-01.png" class="col-12 col-md-6 order-1 order-lg-2">
+                            <img src="img/bootsrap-page-01.png" class="col-12 col-lg-6 order-1 order-lg-2">
                         </div>
                     </div>
                 </div>
-                <div class="slider d-flex align-items-center pt-5">
-                    <div class="preview d-flex align-items-center">
-                        <img onclick="selectCard(4)" src="img/gdlwebcamp-01.png" class="thumbnail activeBar rounded">
-                        <img onclick="selectCard(1)" src="img/sm-01.png" class="thumbnail rounded">
-                        <img onclick="selectCard(2)" src="img/firebase-chat-01.png" class="thumbnail rounded">
-                        <img onclick="selectCard(3)" src="img/bootsrap-page-01.png" class="thumbnail rounded">
+                <div class="slider d-flex align-items-center col-lg-9 mx-lg-auto py-2 mt-lg-5 order-2 order-lg-3">
+                    <div id="thumbnailContainer" class="preview d-flex row col-sm-11 row col-md-10 mx-sm-auto align-items-center">
+                        <img src="img/gdlwebcamp-01.png" class="col-3 thumbnail activeBar" data-number="0">
+                        <img src="img/sm-01.png" class="col-3 thumbnail" data-number="1">
+                        <img src="img/firebase-chat-01.png" class="col-3 thumbnail" data-number="2">
+                        <img src="img/bootsrap-page-01.png" class="col-3 thumbnail" data-number="3">
+                        <!-- add here new thumbnail for news projects and increment +1 in the data-number -->
                     </div>
                 </div>
             </div>

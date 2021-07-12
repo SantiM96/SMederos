@@ -1,92 +1,42 @@
-
-const web1 = document.querySelector("#web1"),
-    web2 = document.querySelector("#web2"),
-    web3 = document.querySelector("#web3"),
-    web4 = document.querySelector("#web4"),
-    thumbnail = document.getElementsByClassName("thumbnail"),
-    webs = $("#webs"),
+const webs = document.getElementById("webs")
+    totalWebs = document.querySelectorAll(".webToSlider"),
+    thumbnailTotal = document.querySelectorAll(".thumbnail"),
+    thumbnailContainer = document.querySelector("#thumbnailContainer"),
     setTimeInterval = 5000
-
 let sliderAutomatic = setInterval(slider, setTimeInterval),
     state = false,
-    count = 0;
-
-webs.hover(() => {
-    state = !state;
-    if (state == true) {
-        clearInterval(sliderAutomatic);
-    } else {
-        sliderAutomatic = setInterval(slider, setTimeInterval);
-    }
-});
+    count = 0
 
 function slider() {
-    count++;
-    selectCard(count);
+    count++
+    if (count == totalWebs.length) count = 0
+    selectCard(totalWebs)
 }
 
-function selectCard(n) {
+function selectCard(totalElements, nImg = count) {
+    for (position of totalElements) {
+        if (position == totalElements[nImg]) {
+            position.classList.replace("d-none", "d-block")
+
+            document.getElementsByClassName("activeBar")[0].classList.remove("activeBar")
+            thumbnailTotal[count].classList.add("activeBar")
+        }
+        else position.classList.replace("d-block", "d-none")
+    }
+}
+
+// Delegation for thumbnail
+thumbnailContainer.addEventListener('click', e => {
+    if (e.target == thumbnailContainer) return
+    let thumbClicked = parseInt(e.target.getAttribute('data-number'))
+    selectCard(totalWebs, thumbClicked)
+    document.getElementsByClassName("activeBar")[0].classList.remove("activeBar")
+    thumbnailTotal[thumbClicked].classList.add("activeBar")
+    count = thumbClicked
     clearInterval(sliderAutomatic)
-    if (n == 1) {
-        web1.classList.replace("d-block", "d-none");
-        web2.classList.replace("d-none", "d-block");
-        web3.classList.replace("d-block", "d-none");
-        web4.classList.replace("d-block", "d-none");
-        document
-            .getElementsByClassName("activeBar")[0]
-            .classList.remove("activeBar");
-        thumbnail[n].classList.add("activeBar");
-        count = n;
-    }
-    if (n == 2) {
-        web1.classList.replace("d-block", "d-none");
-        web2.classList.replace("d-block", "d-none");
-        web3.classList.replace("d-none", "d-block");
-        web4.classList.replace("d-block", "d-none");
-        document
-            .getElementsByClassName("activeBar")[0]
-            .classList.remove("activeBar");
-        thumbnail[n].classList.add("activeBar");
-        count = n;
-    }
-    if (n == 3) {
-        web1.classList.replace("d-block", "d-none");
-        web2.classList.replace("d-block", "d-none");
-        web3.classList.replace("d-block", "d-none");
-        web4.classList.replace("d-none", "d-block");
-        document
-            .getElementsByClassName("activeBar")[0]
-            .classList.remove("activeBar");
-        thumbnail[n].classList.add("activeBar");
-        count = n;
-    }
-    if (n == 4) {
-        web1.classList.replace("d-none", "d-block");
-        web2.classList.replace("d-block", "d-none");
-        web3.classList.replace("d-block", "d-none");
-        web4.classList.replace("d-block", "d-none");
-        document
-            .getElementsByClassName("activeBar")[0]
-            .classList.remove("activeBar");
-        thumbnail[0].classList.add("activeBar");
-        count = 0;
-    }
-}
+    sliderAutomatic = setInterval(slider, setTimeInterval)
+})
 
-$("#slide_nav_button").click(function () {
-    $("#slide_menu").animate({
-        width: "toggle",
-        height: "toggle",
-    }, 500 );
-});
-
-if (screen.availWidth < 767) {
-    $("#slide_menu li").click(function () {
-        $("#slide_menu").show();
-
-        $("#slide_menu").animate({
-            width: "toggle",
-            height: "toggle",
-        }, 500 );
-    });
-}
+//keep while the click is over webs and restore interval after leave the element
+webs.addEventListener('mouseover', () => clearInterval(sliderAutomatic))
+webs.addEventListener('mouseout', () => sliderAutomatic = setInterval(slider, setTimeInterval))

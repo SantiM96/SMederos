@@ -1,7 +1,6 @@
 body {
     max-width: 100%;
     overflow-x: hidden;
-    
 }
 .img-header {
     background-image: url(/img/header.jpg);
@@ -43,7 +42,7 @@ body {
 }
 
 /* Slider */
-.imgs:hover::before {
+/* .imgs:hover::before {
     font-family: "Font Awesome 5 Free";
     font-size: 2rem;
     font-weight: 900;
@@ -58,62 +57,16 @@ body {
     position: absolute;
     left: 0px;
     top: 0px;
-}
-
-#slide_nav_button {
-    font-size: 2rem;
-    cursor: pointer;
-    color: white !important;
-}
-
-@media (max-width: 767px) {
-    #slide_menu {
-        display: none;
-    }
-
-    #slide_menu li a {
-        font-size: 1.3rem !important;
-    }
-
-    .preview {
-        display: none !important;
-    }
-}
-
-@media (max-width: 991px) {
-    .logodev {
-        font-size: 1.5rem;
-        padding-top: 0.7rem !important;
-    }
-}
-
-#error {
-    display: none;
-}
-
-#nice {
-    display: none;
-}
-
-.slider {
-    right: 30px;
-    bottom: 50px;
-}
-
-.preview {
-    margin: 0 35px;
-}
+} */
 
 .preview img {
-    width: 60px;
-    margin: 0 10px;
     opacity: 0.4;
+    border-radius: 30px!important;
 }
 
 .preview .activeBar {
     display: block;
-    border: 3px solid #000;
-    width: 100px;
+    transform: scale(1.25);
     opacity: 1;
     animation: fadeIn;
     animation-duration: 2s;
