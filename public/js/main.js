@@ -1,4 +1,5 @@
-const webs = document.getElementById("webs")
+// slider
+const webs = document.getElementById("webs"),
     totalWebs = document.querySelectorAll(".webToSlider"),
     thumbnailTotal = document.querySelectorAll(".thumbnail"),
     thumbnailContainer = document.querySelector("#thumbnailContainer"),
@@ -37,6 +38,43 @@ thumbnailContainer.addEventListener('click', e => {
     sliderAutomatic = setInterval(slider, setTimeInterval)
 })
 
-//keep while the click is over webs and restore interval after leave the element
+// keep while the click is over webs and restore interval after leave the element
 webs.addEventListener('mouseover', () => clearInterval(sliderAutomatic))
 webs.addEventListener('mouseout', () => sliderAutomatic = setInterval(slider, setTimeInterval))
+// finish slider
+
+// navbar
+
+const body = $("body"),
+    navbar = $("#auto-add-active"),
+    home = $("#home"),
+    parentNav = $("#myName")
+    
+
+
+let heightToChange = home.height() / 2 + parentNav.height() / 2,
+    change = true
+
+window.onscroll = () => {
+    if (heightToChange <= window.scrollY && change) {
+        navbar.remove()
+        home.before(navbar)
+        heightToChange = home.height() / 2 + parentNav.height() * 1.06
+        change = false
+        navbar
+            .removeClass('gradient-nav')
+            .removeClass('animate__pulse')
+            .addClass('animate__fadeInDown')
+        
+    }
+    else if (heightToChange >= window.scrollY && !change) {
+        navbar.remove()
+        parentNav.append(navbar)
+        heightToChange = home.height() / 2 + parentNav.height() / 2
+        change = true
+        navbar
+            .addClass('gradient-nav')
+            .removeClass('animate__fadeInDown')
+            .addClass('animate__pulse')
+    }
+}
