@@ -6,11 +6,10 @@ document.addEventListener('DOMContentLoaded', function () {
         thumbnailTotal = document.querySelectorAll(".thumbnail"),
         thumbnailContainer = document.querySelector("#thumbnailContainer"),
         btnsMobile = document.querySelectorAll('.btn-sec'),
-        setTimeInterval = 5000
+        setTimeInterval = 10000
 
-    console.log("inital interval")
+    // inital interval
     let sliderAutomatic = setInterval(slider, setTimeInterval),
-        state = false,
         count = 0,
         secuence = false
 
@@ -49,27 +48,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // keep while the click is over webs and restore interval after leave the element in desktop version
     webs.addEventListener('mouseover', () => {
-        if (window.screen.width > 992) {
-            console.log("mouseover")
-            clearInterval(sliderAutomatic)
-        }
+        if (window.screen.width > 992) clearInterval(sliderAutomatic)
     })
     webs.addEventListener('mouseout', () => {
-        if (window.screen.width > 992) {
-            console.log("mouseout")
-            sliderAutomatic = setInterval(slider, setTimeInterval)
-        }
+        if (window.screen.width > 992) sliderAutomatic = setInterval(slider, setTimeInterval)
     })
-    if (window.screen.width > 992) {
-        for (btnMo of btnsMobile) {
-            btnMo.parentNode.parentNode.classList.add('d-none')
-        }
-    }
-
-
-
-
-
+    if (window.screen.width > 992) for (btnMo of btnsMobile) btnMo.parentNode.parentNode.classList.add('d-none')
     // keep while the button mobile is checked and restore interval after quit checked
     for (btnMo of btnsMobile) {
         btnMo.addEventListener('click', function () {
@@ -88,7 +72,24 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
     }
-
+    // calculate time into the internal sliders
+    const elementsTimeInternal = document.querySelectorAll('.data-bs-interval')
+    for (element of elementsTimeInternal) element.setAttribute('data-bs-interval', setTimeInterval / 3)
+    // add notification in the internal slider
+    if (window.screen.width > 992) {
+        const imgNotification = document.querySelector('#webs aside')
+        for (element of elementsTimeInternal) {
+            element.addEventListener('mouseover', () => {
+                imgNotification.style.opacity = 1
+                imgNotification.style.display = 'inline'
+            })
+            element.addEventListener('mouseout', () => imgNotification.style.opacity = 0)
+        }
+    }
+    // Set height on starting height
+    setTimeout(() => {
+        document.querySelector('.portafolio').style.height = `${document.querySelector('.portafolio').offsetHeight}px`
+    }, 1000);
     // finish slider //
 
 
