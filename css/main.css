@@ -148,6 +148,24 @@ body {
 #technologies .row img {
     max-height: 300px;
 }
+#plus img {
+    min-width: 40px;
+    width: 5%;
+}
+#minus img {
+    min-width: 50px;
+    width: 6.3%;
+}
+#plus img,
+#plus p,
+#minus img,
+#minus p {
+    cursor: pointer;
+}
+#plus p,
+#minus p {
+    font-weight: 500;
+}
 
 
 /* Contact */
