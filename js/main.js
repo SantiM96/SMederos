@@ -125,13 +125,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 .addClass('animate__pulse')
         }
         // add color to home
-        if (!(document.querySelector('.active'))) {
+        if (!(document.querySelector('#auto-add-active').querySelector('.active'))) {
             document.querySelector('#home-btn').classList.add('active')
         }
     }
 
     // add color to home initial
-    if (!(document.querySelector('.active'))) {
+    if (!(document.querySelector('#auto-add-active').querySelector('.active'))) {
         document.querySelector('#home-btn').classList.add('active')
     }
 
@@ -150,6 +150,21 @@ document.addEventListener('DOMContentLoaded', function () {
     // finish navbar //
 
 
+
+    // technologies //
+    const plus = $('#plus'),
+        minus = $('#minus'),
+        hidden = $('#hidden')
+    hidden.hide()
+    plus.click( () => {
+        plus.slideUp()
+        hidden.slideDown()
+    })
+    minus.click( () => {
+        plus.slideDown()
+        hidden.slideUp()
+    })
+    // finish technologies //
 
 
 });
