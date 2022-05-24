@@ -4,7 +4,13 @@ body {
     background-color: rgb(206, 206, 206);
 }
 
-/* header & navbar */
+/* Global */
+.nowrap {
+    white-space: nowrap;
+}
+
+
+/* Header & Navbar */
 .img-header {
     background-image: url(/img/header.jpg);
     background-position: center;
@@ -32,7 +38,7 @@ body {
 }
 
 
-/* About me */
+/* About Me */
 .avatar {
     max-width: 300px;
     max-height: 300px;
@@ -143,10 +149,27 @@ body {
 }
 
 
-
-/* technologies */
+/* Technologies */
 #technologies .row img {
     max-height: 300px;
+}
+#plus img {
+    min-width: 40px;
+    width: 5%;
+}
+#minus img {
+    min-width: 50px;
+    width: 6.3%;
+}
+#plus img,
+#plus p,
+#minus img,
+#minus p {
+    cursor: pointer;
+}
+#plus p,
+#minus p {
+    font-weight: 500;
 }
 
 
@@ -156,13 +179,12 @@ body {
 }
 .gradient-technologies {
     background: rgb(109, 220, 255);
-    background: linear-gradient(0deg, rgba(109, 220, 255, 1) 0%, rgba(219, 232, 255, 1) 13%, rgb(233, 233, 233) 100%);
+    background: linear-gradient(0deg, rgb(197, 197, 197) 0%, rgb(221, 221, 221) 13%, rgb(241, 241, 241) 100%);
 }
 .gradient-contact {
     background: rgb(0, 103, 255);
-    background: linear-gradient(0deg, rgba(0, 103, 255, 1) 0%, rgba(109, 220, 255, 1) 100%);
+    background: linear-gradient(0deg, rgb(37, 60, 94) 0%, rgb(197, 197, 197) 100%);
 }
-
 .webToSlider > div > a {
     display: flex;
 }
@@ -174,4 +196,64 @@ body {
 .webToSlider div a img {
     width: 100%;
     flex: 1;
+}
+.spinner {
+    display: flex;
+    width: 100%;
+}
+.spinner span {
+    display: block;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    width: 24px;
+    height: 24px;
+    margin: auto;
+    align-items: center;
+    border-radius: 50%;
+    border-left-color: rgb(0, 255, 255);
+    animation: spin .9s linear infinite;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+#send {
+    transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+}
+
+
+/* Modal Message */
+.modal-container {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    
+    transition: all 1s ease-in;
+    -webkit-transition: all 1s ease-in;
+    -moz-transition: all 1s ease-in;
+    -o-transition: all 1s ease-in;
+}
+.modal-content {
+    padding: 0 7px;
+}
+.modal-success {
+    background-color: rgba(114, 230, 160, 0.9);
+}
+.modal-error {
+    background-color: rgba(218, 72, 61, 0.9);
+}
+.modal-header {
+    border: none;
+}
+.modal-body {
+    padding-top: 0;
+    padding-bottom: 5px;
+}
+.btn-close {
+    margin-top: -3.5px !important;
+    margin-right: -2px !important;
 }

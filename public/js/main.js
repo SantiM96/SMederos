@@ -30,6 +30,59 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    const showSuccess = (modal) => { 
+        const color = $('.modal-content')
+        const title = $('.modal-title')
+        const msg = $('.modal-body p')
+
+        modal.removeClass('animate__fadeOutDown')
+        color.removeClass('modal-error')
+        color.addClass('modal-success')
+        title.html('Mensaje enviado')
+        msg.html('Su mensaje ha sido enviado con éxito.')
+        modal.show()
+        setTimeout(() => {
+            modal.addClass('animate__fadeOutDown')
+        }, 7000);
+    }
+
+    const showError = (modal) => { 
+        const color = $('.modal-content')
+        const title = $('.modal-title')
+        const msg = $('.modal-body p')
+
+        modal.removeClass('animate__fadeOutDown')
+        color.removeClass('modal-success')
+        color.addClass('modal-error')
+        title.html('Error')
+        msg.html('Su mensaje no fue enviado, intente nuevamente.')
+        modal.show()
+        setTimeout(() => {
+            modal.addClass('animate__fadeOutDown')
+        }, 7000);
+    }
+
+    const showMsg = (modal, Msg) => {
+        const color = $('.modal-content')
+        const title = $('.modal-title')
+        const msg = $('.modal-body p')
+
+        modal.removeClass('animate__fadeOutDown')
+        color.removeClass('modal-success')
+        color.removeClass('modal-error')
+        title.html('Mensaje')
+        msg.html(Msg)
+        modal.show()
+        setTimeout(() => {
+            modal.addClass('animate__fadeOutDown')
+        }, 7000);
+    }
+
+    const crossClose = (modal) => {
+        modal.addClass('animate__fadeOutDown')
+    }
+    
+
     // Delegation for thumbnail
     thumbnailContainer.addEventListener('click', e => {
         if (e.target == thumbnailContainer) return
@@ -125,13 +178,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 .addClass('animate__pulse')
         }
         // add color to home
-        if (!(document.querySelector('.active'))) {
+        if (!(document.querySelector('#auto-add-active').querySelector('.active'))) {
             document.querySelector('#home-btn').classList.add('active')
         }
     }
 
     // add color to home initial
-    if (!(document.querySelector('.active'))) {
+    if (!(document.querySelector('#auto-add-active').querySelector('.active'))) {
         document.querySelector('#home-btn').classList.add('active')
     }
 
@@ -151,5 +204,82 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+    // technologies //
+    const plus = $('#plus'),
+        minus = $('#minus'),
+        hidden = $('#hidden')
+    hidden.hide()
+    plus.click( () => {
+        plus.slideUp()
+        hidden.slideDown()
+    })
+    minus.click( () => {
+        plus.slideDown()
+        hidden.slideUp()
+    })
+    // finish technologies //
+
+
+
+    // contact //
+    const send = $('#send')
+    const modal = $('#modal')
+    const modalCross = $('.btn-close')
+    
+    // send api //
+    send.click( async (e) => {
+        e.preventDefault()
+        const name = $('#name').val(),
+            email = $('#email').val(),
+            phone = $('#phone').val(),
+            message = $('#message').val()
+
+        if ((email.length > 0 || phone.length > 0) && message.length > 0) {
+            send.html("<div class='spinner'><span></span></div>")
+            send[0].disabled = true;
+            try {
+                // const response = await fetch('http://localhost:3000/form', { // local
+                const response = await fetch('https://backend-smederos-santim96.vercel.app/form', { // vercel
+
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        phone,
+                        message
+                    })
+                })
+                console.log(response)
+                if (response.status === 200) {
+                    send.html("Enviar")
+                    send[0].disabled = false;
+                    showSuccess(modal)
+                } else {
+                    send.html('Enviar')
+                    send[0].disabled = false;
+                    showError(modal)
+                }
+            } catch (error) {
+                console.log(error)
+                send.html('Enviar')
+                send[0].disabled = false;
+                showError(modal)
+            }
+        } else { // You must complete the required information
+            showMsg(modal, 'Debe completar Email/Número y Mensaje para poder enviar.')
+        }
+    })
+    // send api //
+
+    modalCross.click( () => {
+        crossClose(modal)
+    })
+    // contact //
+
+    
+    
 
 });
